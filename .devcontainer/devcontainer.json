@@ -1,1 +1,1 @@
-{"postStartCommand": "bash ~/start.sh"}
+{"postStartCommand": "sleep 15 && tmux start-server && sleep 2 && tmux new-session -d -s mc && tmux send-keys -t mc \"cd /workspaces/SklSMP/bedrock-server && ./bedrock_server\" Enter && tmux new-session -d -s playit && tmux send-keys -t playit \"cd ~ && ./playit\" Enter"}
