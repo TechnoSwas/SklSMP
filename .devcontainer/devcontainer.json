@@ -1,3 +1,11 @@
 {
-  "postStartCommand": "/bin/bash -c 'sleep 20 && tmux start-server && sleep 2 && tmux new-session -d -s mc && tmux send-keys -t mc \"cd /workspaces/SklSMP/bedrock-server && ./bedrock_server\" Enter && tmux new-session -d -s playit && tmux send-keys -t playit \"cd ~ && ./playit\" Enter'"
+    "name": "Minecraft Server",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "installZsh": true
+        }
+    },
+    "postCreateCommand": "sudo apt-get update && sudo apt-get install -y tmux && curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/playit.gpg >/dev/null && echo 'deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./ ' | sudo tee /etc/apt/sources.list.d/playit-cloud.list && sudo apt-get update && sudo apt-get install playit -y",
+    "postStartCommand": "bash ~/start.sh"
 }
+
